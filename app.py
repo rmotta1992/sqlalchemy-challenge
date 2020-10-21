@@ -10,5 +10,8 @@ def home():
         f"/api/v1.0/precipitaion<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end><br/>")
+      #  f"/api/v1.0/""start""<br/>"
+       # f"/api/v1.0/""start"/"end""<br/>"
+    )
+if __name__ == "__main__":
+    app.run(debug=True)
