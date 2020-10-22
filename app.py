@@ -73,7 +73,8 @@ def station():
 def tobs():
     session = Session(engine)
     
-    tobs_results = session.query(measurement.date, measurement.station, measurement.tobs).filter(measurement.date >= "2016-08-23").filter(measurement.station == 'USC00519281').all()
+    tobs_results = session.query(measurement.date, measurement.station, measurement.tobs)\
+        .filter(measurement.date >= "2016-08-23").filter(measurement.station == 'USC00519281').all()
 
     session.close()
 
