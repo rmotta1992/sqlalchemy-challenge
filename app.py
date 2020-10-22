@@ -32,12 +32,13 @@ def home():
 def precipition():
     session = Session(engine)
  
-    results = session.query(measurement.prcp, measurement.date).all()
+    prcp_results = session.query(measurement.prcp, measurement.date).filter(measurement.date >= "2016-08-23").all()
+
 
     session.close()
 
     prcp_data = []
-    for prcp, date in results:
+    for prcp, date in prcp_results:
         prcp_dict = {}
         prcp_dict["date"] = date
         prcp_dict["prcp"] = prcp
@@ -48,9 +49,5 @@ def precipition():
 
 
 
-       
-    
-   
-    
 if __name__ == "__main__":
     app.run(debug=True)
