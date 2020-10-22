@@ -13,6 +13,8 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 measurement = Base.classes.measurement
+station = Base.classes.station
+
 
 
 app = Flask(__name__)
@@ -48,6 +50,27 @@ def precipition():
     return jsonify(prcp_data)
 
 
+@app.route("/api/v1.0/stations")
+def station():
+    session = Session(engine)
+    
+    station = Base.classes.station
+    station_results = session.query(station.station).all()
 
+    session.close()
+
+    station_data = []
+    for station in station_results:
+        station_dict = {}
+        station_dict["station"] = station
+
+        station_data.append(station_dict)
+       
+
+    return jsonify(station_data)
+       
+
+   
+    
 if __name__ == "__main__":
     app.run(debug=True)
